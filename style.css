@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 35px;
+    text-align: center;
+}
+
+#input {
+    font-size: 45px;
+    width: 100%;
+    margin: 50px auto;
+    margin-bottom: 20px;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+
+#list {
+    list-style: none;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 35px;
+    width: 70%;
+    margin: 3px auto;
+    color: rgba(223, 192, 192, 0.932);
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.date {
+    flex-basis: 100px;
+    font-size: 10px;
+    background-color: blue;
+    align-self: flex-end;
+}
