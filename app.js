@@ -1,4 +1,6 @@
 var items = []; 
+
+//some test data
 items.push(new ToDoItem("laura"));
 items.push(new ToDoItem("kelly"));
 items.push(new ToDoItem("pocket"));
@@ -11,14 +13,20 @@ document.getElementById("input").onkeyup = function(e) {
     }
 }
 
-document.getElementById("list").onclick = function(e) {
-    let childIndex = getChildIndex(e.target);
-    console.log(e.target, childIndex)
-    e.target.parentElement.removeChild(e.target);
+function remove(e) {
+    let childIndex = getChildIndex(e.target.parentElement);
+    e.target.parentElement.remove();
     items.splice(childIndex,1);
-    console.log()
+}      
+
+// document.getElementById("list").onclick = function(e) {
+//     let childIndex = getChildIndex(e.target);
+//     console.log(e.target, childIndex)
+//     e.target.parentElement.removeChild(e.target);
+//     items.splice(childIndex,1);
+//     console.log()
     
-}
+// }
 
 document.getElementById("clearBut").onclick = function(e) {
     document.getElementById("list").innerHTML = "";
@@ -49,7 +57,6 @@ function addToDoItem() {
     document.getElementById("input").value = "";
 }
 
-// sort the array by title aplhabetically
 function sort() {
     items.sort(function(todoItem1, todoItem2) {
         if (todoItem1.title < todoItem2.title) {
@@ -74,12 +81,22 @@ function render() {
         let li = document.createElement("li");
         let div = document.createElement("div");
         let divDate = document.createElement("div");
-        div.innerText = '- ' + items[i].title;
+        div.innerText = items[i].title;
         divDate.innerText = items[i].date;
         divDate.classList.add("date");
         ul.appendChild(li);
         li.appendChild(div);
         li.appendChild(divDate);
+        // let button = document.createElement("button");
+        let img = document.createElement("img");
+        // button.classList.add("deleteBut");
+        img.classList.add("deleteImg");
+        img.src = "https://www.clipartmax.com/png/middle/256-2563336_the-flue-gases-must-be-cleaned-of-pollutants-before-small-delete-icon.png";
+        // button.appendChild(img);
+        li.appendChild(img);
+
+        img.onclick = remove;
+
     }
 }
 

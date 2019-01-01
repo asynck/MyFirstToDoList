@@ -11,7 +11,7 @@ body {
 }
 
 #input {
-    font-size: 45px;
+    font-size: 40px;
     width: 100%;
     margin: 50px auto;
     margin-bottom: 20px;
@@ -27,17 +27,39 @@ body {
 ul li {
     display: flex;
     justify-content: space-between;
-    font-size: 35px;
+    font-size: 25px;
     width: 70%;
+    min-height: 40px;
     margin: 3px auto;
-    color: rgba(223, 192, 192, 0.932);
+    color: rgba(199, 171, 171, 0.932);
     border: 1px solid grey;
     border-radius: 5px;
+    /* this below refers to the childern of the li and puts them in a position relative to it */
+    position: relative;
 }
 
 .date {
-    flex-basis: 100px;
+    /* flex-basis: 100px; */
     font-size: 10px;
-    background-color: blue;
     align-self: flex-end;
+    color: rgba(51, 42, 42, 0.932);
+    padding-right: 10px;
 }
+
+div {
+    padding-left: 10px;
+    align-self: center;
+}
+
+.deleteImg {
+    width: 15px;
+    height: 14px;
+    /* max-width: 100%; display: block; height: auto; */
+    padding-right: 2px;
+    /* padding-top: 2px; */
+    position: absolute;
+    right: 10;
+    top: 2;
+}
+
+
