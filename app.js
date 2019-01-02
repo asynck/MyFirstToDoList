@@ -4,6 +4,9 @@ var items = [];
 items.push(new ToDoItem("first thing to do is.."));
 items.push(new ToDoItem("another thing to do is.."));
 items.push(new ToDoItem("oh what a great idea to do.."));
+items.push(new ToDoItem("oh another thing to do.."));
+items.push(new ToDoItem("pff so many things I havent done.."));
+items.push(new ToDoItem("I ll never get to this one but it's oki.."));
 render();
 
 //this is an event handler - for elements that exist when the page loads!
@@ -11,13 +14,7 @@ document.getElementById("input").onkeyup = function(e) {
     if (e.keyCode == 13) {
         addToDoItem();
     }
-}
-
-function remove(e) {
-    let childIndex = getChildIndex(e.target.parentElement);
-    e.target.parentElement.remove();
-    items.splice(childIndex,1);
-}      
+}     
 
 document.getElementById("clearBut").onclick = function(e) {
     document.getElementById("list").innerHTML = "";
@@ -40,15 +37,19 @@ document.getElementById("colorBut").onchange = function(e) {
     let myChildNode = document.getElementById("list").childNodes;
     for (let i = 0; i < myChildNode.length; i++) {
         if (selectedBoxValue == 1) {
+            myChildNode[i].classList.remove("itemColorPink", "itemColorGreen", "itemColorDefault");
             myChildNode[i].classList.add("itemColorMaroon");
         }
         else if (selectedBoxValue == 2) {
+            myChildNode[i].classList.remove("itemColorMaroon", "itemColorGreen", "itemColorDefault");
             myChildNode[i].classList.add("itemColorPink");
         }
         else if (selectedBoxValue == 3) {
+            myChildNode[i].classList.remove("itemColorPink", "itemColorMaroon", "itemColorDefault");
             myChildNode[i].classList.add("itemColorGreen");
         }
         else if (selectedBoxValue == 0){
+            myChildNode[i].classList.remove("itemColorPink", "itemColorGreen", "itemColorMaroon");
             myChildNode[i].classList.add("itemColorDefault");
         }
     } 
@@ -103,7 +104,7 @@ function render() {
         let img = document.createElement("img");
         img.classList.add("deleteImg");
         img.src = "https://maxcdn.icons8.com/Share/icon/Very_Basic/delete_sign1600.png";
-        // button.appendChild(img);
+        img.title = "Delete"
         li.appendChild(img);
 
         img.onclick = remove;
@@ -118,7 +119,11 @@ function render() {
     }
 }
 
-
+function remove(e) {
+    let childIndex = getChildIndex(e.target.parentElement);
+    e.target.parentElement.remove();
+    items.splice(childIndex,1);
+} 
 
 var getChildIndex = function(child) {
     var parent = child.parentElement;
