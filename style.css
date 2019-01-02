@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Montserrat, monospace;
 }
 
 body {
@@ -28,17 +29,20 @@ body {
 ul li {
     display: flex;
     justify-content: space-between;
-    font-size: 25px;
+    font-size: 20px;
     width: 70%;
     max-width: 650px;
     min-width: 100px;
     min-height: 40px;
-    margin: 3px auto;
-    color: rgba(136, 119, 119, 0.932);
-    border: 1px solid grey;
+    margin: 10px auto;
+    color: rgba(54, 53, 53, 0.932);
+    border: 1px solid rgb(214, 214, 214);
     border-radius: 5px;
     /* this below refers to the childern of the li and puts them in a position relative to it */
     position: relative;
+    /* transition: all 3s ease-out; */
+    overflow: hidden;
+    background: #ffff;
 }
 
 .date {
@@ -57,12 +61,13 @@ div {
 
 .buttons {
     border: 1px solid rgb(86, 192, 228);
-    width: 70px;
+    width: 75px;
     height: 30px;
     padding: 5px;
     color: #ffff;
     border-radius: 4px;
     background-color: rgb(86, 192, 228);
+    transition-duration: 0.4s;
 }
 
 .deleteImg {
@@ -90,4 +95,49 @@ div {
 
 .itemColorGreen {
     color: rgba(77, 139, 71, 0.932);
+}
+
+.itemColorDefault {
+    color: rgba(54, 53, 53, 0.932);
+}
+
+#copyright {
+    color: gray;
+    font-size: 10px;
+    position: relative;
+    margin: 100px auto;
+    padding-right: 10px;
+}
+
+#copyrightImg {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    margin-left: 5px;
+    bottom: -4px;
+}
+
+.buttons:hover {
+    background-color: rgb(115, 212, 245);
+}
+
+@media (max-width: 600px) {
+    #input {
+        font-size: 20px;
+    }    
+    ul li {
+        font-size: 10px;
+        width: 100%;
+    }
+    .buttons {
+        font-size: 5px;
+        width: 35px;
+        height: 15px;
+        padding: 0;
+    }
+}
+
+li.show {
+    opacity: 1;
+    /* background: lightblue; */
 }

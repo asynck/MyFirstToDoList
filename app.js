@@ -29,7 +29,7 @@ document.getElementById("sortBut").onclick = sort;
 function ToDoItem(title) {
     this.title = title;
     let d = new Date();
-    this.date = "Edited " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+    this.date = "Edited " + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
     this.backgroundColor = "#FFFFFF";
 }
 
@@ -49,7 +49,7 @@ document.getElementById("colorBut").onchange = function(e) {
             myChildNode[i].classList.add("itemColorGreen");
         }
         else if (selectedBoxValue == 0){
-            myChildNode[i].classList.remove;
+            myChildNode[i].classList.add("itemColorDefault");
         }
     } 
 }
@@ -85,8 +85,8 @@ function sort() {
     render();
 }
 
+// re-render the list
 function render() {
-    // re-render the list
     document.getElementById("list").innerHTML = "";
 
     for (let i = 0; i < items.length; i++) {
@@ -100,9 +100,7 @@ function render() {
         ul.appendChild(li);
         li.appendChild(div);
         li.appendChild(divDate);
-        // let button = document.createElement("button");
         let img = document.createElement("img");
-        // button.classList.add("deleteBut");
         img.classList.add("deleteImg");
         img.src = "https://maxcdn.icons8.com/Share/icon/Very_Basic/delete_sign1600.png";
         // button.appendChild(img);
@@ -110,8 +108,17 @@ function render() {
 
         img.onclick = remove;
 
+        if (i == items.length - 1) { 
+            setTimeout(function() {
+                li.classList.add("show");
+                div.classList.add("show");
+                divDate.classList.add("show");    
+            }, 10);
+        }    
     }
 }
+
+
 
 var getChildIndex = function(child) {
     var parent = child.parentElement;
