@@ -30,29 +30,25 @@ function ToDoItem(title) {
     this.backgroundColor = "#FFFFFF";
 }
 
+let itemColorCls = null;
+
 document.getElementById("colorBut").onchange = function(e) {
     let selectBox = document.getElementById("colorBut");
-    let selectedBoxValue = selectBox.options[selectBox.selectedIndex].value;
-    console.log(selectedBoxValue)
+    let selectedBoxValue = selectBox.value;
+    console.log(selectBox.selected)
+    
+    let newItemColorCls = selectedBoxValue;
+
     let myChildNode = document.getElementById("list").childNodes;
     for (let i = 0; i < myChildNode.length; i++) {
-        if (selectedBoxValue == 1) {
-            myChildNode[i].classList.remove("itemColorPink", "itemColorGreen", "itemColorDefault");
-            myChildNode[i].classList.add("itemColorMaroon");
+        if (itemColorCls) {
+            myChildNode[i].classList.remove(itemColorCls);
         }
-        else if (selectedBoxValue == 2) {
-            myChildNode[i].classList.remove("itemColorMaroon", "itemColorGreen", "itemColorDefault");
-            myChildNode[i].classList.add("itemColorPink");
-        }
-        else if (selectedBoxValue == 3) {
-            myChildNode[i].classList.remove("itemColorPink", "itemColorMaroon", "itemColorDefault");
-            myChildNode[i].classList.add("itemColorGreen");
-        }
-        else if (selectedBoxValue == 0){
-            myChildNode[i].classList.remove("itemColorPink", "itemColorGreen", "itemColorMaroon");
-            myChildNode[i].classList.add("itemColorDefault");
-        }
+
+        myChildNode[i].classList.add(newItemColorCls);
     } 
+
+    itemColorCls = newItemColorCls;
 }
 
 
