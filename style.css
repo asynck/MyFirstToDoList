@@ -11,7 +11,7 @@ body {
 }
 
 #input {
-    font-size: 40px;
+    font-size: 36px;
     width: 100%;
     margin: 50px auto;
     margin-bottom: 20px;
@@ -22,6 +22,7 @@ body {
 
 #list {
     list-style: none;
+    padding-right: 40px;
 }
 
 ul li {
@@ -29,9 +30,11 @@ ul li {
     justify-content: space-between;
     font-size: 25px;
     width: 70%;
+    max-width: 650px;
+    min-width: 100px;
     min-height: 40px;
     margin: 3px auto;
-    color: rgba(199, 171, 171, 0.932);
+    color: rgba(136, 119, 119, 0.932);
     border: 1px solid grey;
     border-radius: 5px;
     /* this below refers to the childern of the li and puts them in a position relative to it */
@@ -40,15 +43,26 @@ ul li {
 
 .date {
     /* flex-basis: 100px; */
-    font-size: 10px;
+    font-size: 8px;
     align-self: flex-end;
     color: rgba(51, 42, 42, 0.932);
     padding-right: 10px;
+    font-style: italic;
 }
 
 div {
     padding-left: 10px;
     align-self: center;
+}
+
+.buttons {
+    border: 1px solid rgb(86, 192, 228);
+    width: 70px;
+    height: 30px;
+    padding: 5px;
+    color: #ffff;
+    border-radius: 4px;
+    background-color: rgb(86, 192, 228);
 }
 
 .deleteImg {
@@ -59,7 +73,21 @@ div {
     /* padding-top: 2px; */
     position: absolute;
     right: 10;
-    top: 2;
+    top: 4;
 }
 
+#colorBut {
+    width: 160px;
+}
 
+.itemColorMaroon {
+    color: rgb(128, 0, 0);
+}
+
+.itemColorPink {
+    color: rgba(199, 171, 171, 0.932);
+}
+
+.itemColorGreen {
+    color: rgba(77, 139, 71, 0.932);
+}

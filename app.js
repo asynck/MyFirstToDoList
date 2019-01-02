@@ -1,9 +1,9 @@
 var items = []; 
 
 //some test data
-items.push(new ToDoItem("laura"));
-items.push(new ToDoItem("kelly"));
-items.push(new ToDoItem("pocket"));
+items.push(new ToDoItem("first thing to do is.."));
+items.push(new ToDoItem("another thing to do is.."));
+items.push(new ToDoItem("oh what a great idea to do.."));
 render();
 
 //this is an event handler - for elements that exist when the page loads!
@@ -19,15 +19,6 @@ function remove(e) {
     items.splice(childIndex,1);
 }      
 
-// document.getElementById("list").onclick = function(e) {
-//     let childIndex = getChildIndex(e.target);
-//     console.log(e.target, childIndex)
-//     e.target.parentElement.removeChild(e.target);
-//     items.splice(childIndex,1);
-//     console.log()
-    
-// }
-
 document.getElementById("clearBut").onclick = function(e) {
     document.getElementById("list").innerHTML = "";
     items = [];
@@ -38,9 +29,31 @@ document.getElementById("sortBut").onclick = sort;
 function ToDoItem(title) {
     this.title = title;
     let d = new Date();
-    this.date = "" + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+    this.date = "Edited " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
     this.backgroundColor = "#FFFFFF";
 }
+
+document.getElementById("colorBut").onchange = function(e) {
+    let selectBox = document.getElementById("colorBut");
+    let selectedBoxValue = selectBox.options[selectBox.selectedIndex].value;
+    console.log(selectedBoxValue)
+    let myChildNode = document.getElementById("list").childNodes;
+    for (let i = 0; i < myChildNode.length; i++) {
+        if (selectedBoxValue == 1) {
+            myChildNode[i].classList.add("itemColorMaroon");
+        }
+        else if (selectedBoxValue == 2) {
+            myChildNode[i].classList.add("itemColorPink");
+        }
+        else if (selectedBoxValue == 3) {
+            myChildNode[i].classList.add("itemColorGreen");
+        }
+        else if (selectedBoxValue == 0){
+            myChildNode[i].classList.remove;
+        }
+    } 
+}
+
 
 function addToDoItem() {
     let title = document.getElementById("input").value;
@@ -91,7 +104,7 @@ function render() {
         let img = document.createElement("img");
         // button.classList.add("deleteBut");
         img.classList.add("deleteImg");
-        img.src = "https://www.clipartmax.com/png/middle/256-2563336_the-flue-gases-must-be-cleaned-of-pollutants-before-small-delete-icon.png";
+        img.src = "https://maxcdn.icons8.com/Share/icon/Very_Basic/delete_sign1600.png";
         // button.appendChild(img);
         li.appendChild(img);
 
@@ -113,3 +126,21 @@ var getChildIndex = function(child) {
 }
 
 
+//old code
+// document.getElementById("list").onclick = function(e) {
+//     let childIndex = getChildIndex(e.target);
+//     console.log(e.target, childIndex)
+//     e.target.parentElement.removeChild(e.target);
+//     items.splice(childIndex,1);
+//     console.log()
+    
+// }
+
+//code to change color for one button....
+// document.getElementById("colorBut").onclick = function(e) {
+//     let myChildNode = document.getElementById("list").childNodes;
+//     console.log(myChildNode)
+//     for (let i = 0; i < myChildNode.length; i++) {
+//         myChildNode[i].classList.add("itemcolor");
+//     }
+// }
