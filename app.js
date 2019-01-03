@@ -10,6 +10,12 @@ items.push(new ToDoItem("I ll never get to this one but it's oki.."));
 render();
 
 //this is an event handler - for elements that exist when the page loads!
+document.getElementById("inputSearch").onkeyup = function(e) {
+    if (e.keyCode == 13) {
+        mySearch();
+    }
+}
+
 document.getElementById("input").onkeyup = function(e) {
     if (e.keyCode == 13) {
         addToDoItem();
@@ -23,6 +29,29 @@ document.getElementById("clearBut").onclick = function(e) {
 
 document.getElementById("sortBut").onclick = sort;
 
+function mySearch() {
+    // Declare vars
+    let inputValue = document.getElementById("inputSearch").value;
+    // to make the search non case sensitive
+    let filter = inputValue.toUpperCase();
+    let ul = document.getElementById("list");
+    let li = ul.childNodes;
+    
+    // Loop through list and hide those that dont match the search
+    for (let i = 0; i < li.length; i++) {
+        let div = li[i].getElementsByTagName("div")[0];
+        let divText = div.innerText;
+
+        if (divText.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        }
+        else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+
 function ToDoItem(title) {
     this.title = title;
     let d = new Date();
@@ -33,13 +62,13 @@ function ToDoItem(title) {
 let itemColorCls = null;
 
 document.getElementById("colorBut").onchange = function(e) {
+    // Declare variables
     let selectBox = document.getElementById("colorBut");
     let selectedBoxValue = selectBox.value;
-    console.log(selectBox.selected)
-    
     let newItemColorCls = selectedBoxValue;
-
     let myChildNode = document.getElementById("list").childNodes;
+
+    // Loop through all list items and remove/reassign colors
     for (let i = 0; i < myChildNode.length; i++) {
         if (itemColorCls) {
             myChildNode[i].classList.remove(itemColorCls);
@@ -48,6 +77,7 @@ document.getElementById("colorBut").onchange = function(e) {
         myChildNode[i].classList.add(newItemColorCls);
     } 
 
+    // Update global variable
     itemColorCls = newItemColorCls;
 }
 
@@ -58,7 +88,6 @@ function addToDoItem() {
 
     // add the item to our collection/array
     items.push(todoItem);
-    console.dir(items);
 
     // sort();
 
@@ -132,6 +161,13 @@ var getChildIndex = function(child) {
     }
     return i;
 }
+
+
+
+
+
+
+
 
 
 //old code
