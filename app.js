@@ -11,9 +11,7 @@ render();
 
 //this is an event handler - for elements that exist when the page loads!
 document.getElementById("inputSearch").onkeyup = function(e) {
-    if (e.keyCode == 13) {
         mySearch();
-    }
 }
 
 document.getElementById("input").onkeyup = function(e) {
